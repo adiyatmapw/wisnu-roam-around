@@ -100,7 +100,7 @@ export default function Home() {
         }
         {
           itinerary && (
-            <h3>Ok, we've made your itinerary for {checkCity(request.city)}</h3>
+            <h3 style={styles.cityHeadingStyle}>Ok, we've made your itinerary for {checkCity(request.city)}</h3>
           )
         }
         {
@@ -147,6 +147,10 @@ function checkCity(city?: string) {
 }
 
 const styles = {
+  cityHeadingStyle: {
+    color: 'white',
+    marginBottom: '20px'
+  },
   header: {
     textAlign: 'center' as 'center',
     marginTop: '60px',
