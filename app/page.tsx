@@ -1,12 +1,15 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { data } from '../city-data'
 
 export default function Home() {
   const [request, setRequest] = useState<{days?: string, city?: string}>({})
   let [itinerary, setItinerary] = useState<string>('')
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
     checkRedirect()
@@ -18,8 +21,6 @@ export default function Home() {
     }
   }
 
-  const [loading, setLoading] = useState(false)
-  const [message, setMessage] = useState('')
   async function hitAPI() {
     try {
       if (!request.city || !request.days) return
@@ -30,7 +31,7 @@ export default function Home() {
       setTimeout(() => {
         if (!loading) return
         setMessage('Getting closer ...')
-      }, 7000)
+      }, 2000)
 
       setTimeout(() => {
         if (!loading) return
@@ -99,15 +100,11 @@ export default function Home() {
         }
         {
           itinerary && days.map((day, index) => (
-            // <p
-            //   key={index}
-            //   style={{marginBottom: '20px'}}
-            //   dangerouslySetInnerHTML={{__html: `Day ${day}`}}
-            // />
             <div
               style={{marginBottom: '30px'}}
               key={index}
             >
+              <p>Ok, we've made your itinerary for {checkCity(request.city)}</p>
               <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
@@ -121,11 +118,28 @@ export default function Home() {
             </div>
           ))
         }
-
         </div>
       </div>
     </main>
   )
+}
+
+function checkCity(city?: string) {
+  if (!city) return
+  const cityToLowerCase = city.toLowerCase()
+  const link = data[cityToLowerCase].link
+  console.log('link: ', link)
+  if (data[cityToLowerCase]) {
+    return (
+      <a
+        target="_blank"
+        rel="no-referrer"
+        href={link}
+      >{city}</a>
+    )
+  } else {
+    return city
+  }
 }
 
 const styles = {

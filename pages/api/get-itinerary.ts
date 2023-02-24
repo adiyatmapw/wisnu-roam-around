@@ -22,7 +22,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data | Error>
 ) {
-  let days = 4, city = 'Rio'
+  let days, city
   if (req.body) {
     let body = JSON.parse(req.body)
     days = body.days
