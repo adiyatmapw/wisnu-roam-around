@@ -17,7 +17,7 @@ export const data = {
   barcelona: {
     link: "https://www.viator.com/Barcelona/d562-ttd?pid=P00023220&uid=U00023666&mcid=58086"
   },
-  ['big island of hawaii']: {
+  hawaii: {
     link: "https://www.viator.com/Big-Island-of-Hawaii/d669-ttd?pid=P00023220&uid=U00023666&mcid=58086"
   },
   boston: {
@@ -26,7 +26,7 @@ export const data = {
   broome: {
     link: "https://www.viator.com/Broome/d789-ttd?pid=P00023220&uid=U00023666&mcid=58086"
   },
-  ['Cairns & the Tropical North']: {
+  cairns: {
     link:  "https://www.viator.com/Cairns-and-the-Tropical-North/d754-ttd?pid=P00023220&uid=U00023666&mcid=58086"
   },
   cairo: {
@@ -51,38 +51,38 @@ export const data = {
   cozumel: {
     link: "https://www.viator.com/Cozumel/d632-ttd?pid=P00023220&uid=U00023666&mcid=58086"
   }
-    // Darwin: {
-    // link:
-    // "https://www.viator.com/Darwin/d360-ttd?pid=P00023220&uid=U00023666&mcid=58086"
-    // }
-    // Denali National Park: {
-    // link:
-    // "https://www.viator.com/Denali-National-Park/d22364-ttd?pid=P00023220&uid=U00023666&mcid=58086"
-    // }
-    // Denver: {
-    // link:
-    // "https://www.viator.com/Denver/d4837-ttd?pid=P00023220&uid=U00023666&mcid=58086"
-    // }
-    // Dublin: {
-    // link:
-    // "https://www.viator.com/Dublin/d503-ttd?pid=P00023220&uid=U00023666&mcid=58086"
-    // }
-    // Dubrovnik: {
-    // link:
-    // "https://www.viator.com/Dubrovnik/d904-ttd?pid=P00023220&uid=U00023666&mcid=58086"
-    // }
-    // Fairbanks: {
-    // link:
-    // "https://www.viator.com/Fairbanks/d5269-ttd?pid=P00023220&uid=U00023666&mcid=58086"
-    // }
-    // Fajardo: {
-    // link:
-    // "https://www.viator.com/Fajardo/d23854-ttd?pid=P00023220&uid=U00023666&mcid=58086"
-    // }
-    // Florence: {
-    // link:
-    // "https://www.viator.com/Florence/d519-ttd?pid=P00023220&uid=U00023666&mcid=58086"
-    // }
+  darwin: {
+    link:
+          "https://www.viator.com/Darwin/d360-ttd?pid=P00023220&uid=U00023666&mcid=58086"
+   },
+  denali: {
+    link:
+          "https://www.viator.com/Denali-National-Park/d22364-ttd?pid=P00023220&uid=U00023666&mcid=58086"
+   },
+  denver: {
+    link:
+          "https://www.viator.com/Denver/d4837-ttd?pid=P00023220&uid=U00023666&mcid=58086"
+  },
+  dublin: {
+    link:
+          "https://www.viator.com/Dublin/d503-ttd?pid=P00023220&uid=U00023666&mcid=58086"
+  },
+  dubrovnik: {
+    link:
+          "https://www.viator.com/Dubrovnik/d904-ttd?pid=P00023220&uid=U00023666&mcid=58086"
+  },
+  fairbanks: {
+    link:
+          "https://www.viator.com/Fairbanks/d5269-ttd?pid=P00023220&uid=U00023666&mcid=58086"
+  },
+  fajardo: {
+    link:
+          "https://www.viator.com/Fajardo/d23854-ttd?pid=P00023220&uid=U00023666&mcid=58086"
+  },
+  florence: {
+    link:
+          "https://www.viator.com/Florence/d519-ttd?pid=P00023220&uid=U00023666&mcid=58086"
+  }
     // Fort Lauderdale: {
     // link:
     // "https://www.viator.com/Fort-Lauderdale/d660-ttd?pid=P00023220&uid=U00023666&mcid=58086"
