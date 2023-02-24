@@ -127,9 +127,9 @@ export default function Home() {
 function checkCity(city?: string) {
   if (!city) return
   const cityToLowerCase = city.toLowerCase()
-  const link = data[cityToLowerCase].link
-  console.log('link: ', link)
-  if (data[cityToLowerCase]) {
+  const cityData = data[cityToLowerCase]
+  if (cityData) {
+    const link = data[cityToLowerCase].link
     return (
       <a
         target="_blank"
