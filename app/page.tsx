@@ -99,12 +99,16 @@ export default function Home() {
           )
         }
         {
+          itinerary && (
+            <h3>Ok, we've made your itinerary for {checkCity(request.city)}</h3>
+          )
+        }
+        {
           itinerary && days.map((day, index) => (
             <div
               style={{marginBottom: '30px'}}
               key={index}
             >
-              <p>Ok, we've made your itinerary for {checkCity(request.city)}</p>
               <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
@@ -135,10 +139,10 @@ function checkCity(city?: string) {
         target="_blank"
         rel="no-referrer"
         href={link}
-      >{city}</a>
+      >{cityToLowerCase.charAt(0).toUpperCase() + cityToLowerCase.slice(1)}</a>
     )
   } else {
-    return city
+    return cityToLowerCase.charAt(0).toUpperCase() + cityToLowerCase.slice(1)
   }
 }
 
