@@ -11,7 +11,7 @@ export const data = {
   austin: {
     link: "https://www.viator.com/Austin/d5021-ttd?pid=P00023220&uid=U00023666&mcid=58086"
   },
-  aaltimore: {
+  baltimore: {
     link: "https://www.viator.com/Baltimore/d4375-ttd?pid=P00023220&uid=U00023666&mcid=58086"
   },
   barcelona: {
@@ -383,5 +383,4 @@ export const data = {
     // link:
     // "https://www.viator.com/Zurich/d577-ttd?pid=P00023220&uid=U00023666&mcid=58086"
     // }
-  
 }
