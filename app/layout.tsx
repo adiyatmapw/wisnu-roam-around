@@ -24,7 +24,7 @@ export default function RootLayout({
            <Image style={{ marginTop: '2px'}} alt="code available on github" width="18" height="18" src="/github.svg" />
            </a>
             <p>
-            Travel safely, <a className="TravelInsurance" target="_blank" rel="no-opener" href="https://www.travelinsured.com/agency/?r=http:%2F%2Fwww.travgroup.com">Travel Insured🫡</a>
+            Travel safely, <a className="sponsor" target="_blank" rel="no-opener" href="https://www.travelinsured.com/agency/?r=http:%2F%2Fwww.travgroup.com">Travel Insured🫡</a>
             </p>
         </footer>
       </body>
