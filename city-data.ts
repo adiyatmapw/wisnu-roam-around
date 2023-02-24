@@ -50,7 +50,7 @@ export const data = {
   },
   cozumel: {
     link: "https://www.viator.com/Cozumel/d632-ttd?pid=P00023220&uid=U00023666&mcid=58086"
-  }
+  },
   darwin: {
     link:
           "https://www.viator.com/Darwin/d360-ttd?pid=P00023220&uid=U00023666&mcid=58086"
