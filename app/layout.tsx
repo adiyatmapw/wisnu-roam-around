@@ -20,11 +20,9 @@ export default function RootLayout({
           <AnalyticsWrapper />
         </div>
         <footer className="footer">
-           <a target="_blank" rel="no-opener" href="https://github.com/dabit3/gpt-travel-advisor">
-           <Image style={{ marginTop: '2px'}} alt="code available on github" width="18" height="18" src="/github.svg" />
-           </a>
+        
             <p>
-            Travel safely, <a className="sponsor" target="_blank" rel="no-opener" href="https://www.travelinsured.com/agency/?r=http:%2F%2Fwww.travgroup.com">Travel Insured🫡</a>
+             <a className="sponsor" target="_blank" rel="no-opener" href="https://www.travelinsured.com/agency/?r=http:%2F%2Fwww.travgroup.com">Travel safely, Travel Insured🫡</a>
             </p>
         </footer>
       </body>
