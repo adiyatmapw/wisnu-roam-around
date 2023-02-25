@@ -221,7 +221,7 @@
     "@typescript-eslint/types" "5.49.0"
     "eslint-visitor-keys" "^3.3.0"
 
-"@vercel/analytics@^0.1.8":
+"@vercel/analytics@^0.1.10":
   "integrity" "sha512-jjJ8GzcPnQp0cMxpfYoUycMRBtDiaIeyVjZPiEPe99Dj1PdjMzAFYEASiV/hpNsXHkpcNYCveDFh6jnmh0YSDQ=="
   "resolved" "https://registry.npmjs.org/@vercel/analytics/-/analytics-0.1.10.tgz"
   "version" "0.1.10"
