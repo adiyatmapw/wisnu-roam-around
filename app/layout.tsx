@@ -20,9 +20,8 @@ export default function RootLayout({
           <AnalyticsWrapper />
         </div>
         <footer className="footer">
-        
             <p>
-             <a className="sponsor" target="_blank" rel="no-opener" href="https://www.travelinsured.com/agency/?r=http:%2F%2Fwww.travgroup.com">Travel safely, Travel Insured🫡</a>
+             <a className="sponsor" target="_blank" rel="no-opener" href="https://www.travelinsured.com/agency/?r=http:%2F%2Fwww.travgroup.com">We've hit our limits, come back tomorrow 🫡</a>
             </p>
         </footer>
       </body>
