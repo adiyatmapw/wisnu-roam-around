@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { data } from '../city-data'
 import type { AppProps } from 'next/app';
+import type { AppProps } from 'next/app';
 import { Analytics } from '@vercel/analytics/react';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 export default MyApp;
+
 
 export default function Home() {
   const [request, setRequest] = useState<{days?: string, city?: string}>({})
