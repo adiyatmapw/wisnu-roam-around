@@ -24,8 +24,8 @@ export default function Home() {
   async function hitAPI() {
     try {
       if (!request.city || !request.days) return
-      setMessage('Hi! We hit out GPT limits at the moment. Please come back tomorrow!')
-           //setMessage('Building itinerary...this may take 40 seconds')
+      //setMessage('Hi! We hit our limits at the moment. Please come back tomorrow!')
+      setMessage('Building itinerary...this may take 40 seconds')
       setLoading(true)
       setItinerary('')
 
@@ -125,7 +125,7 @@ export default function Home() {
           }
           {
             itinerary && (
-              <h3 style={styles.cityHeadingStyle}> Ready to take the next step? Support us by booking <a target="_blank" rel="no-opener" href="https://wayaway.tp.st/NoWTlbkP">here</a></h3>
+              <h3 style={styles.cityHeadingStyle}> Ready to take the next step? Support us by booking <a target="_blank" rel="no-opener" href="https://bit.ly/roamaroundfoot">here</a></h3>
             )
           }
         
