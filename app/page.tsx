@@ -137,11 +137,11 @@ export default function Home() {
             </div>
           ))
           }
-          {
+          {/*{
             itinerary && (
               <h3 style={styles.cityHeadingStyle}> I've done the hard work, the next step is easy.  <a target="_blank" rel="no-opener" href="https://bit.ly/roamaroundfoot"> Book here</a></h3>
             )
-          }
+          }*/}
 
         </div>
       </div>
