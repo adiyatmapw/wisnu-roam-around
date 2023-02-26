@@ -115,7 +115,7 @@ export default function Home() {
         }
         {
           itinerary && (
-            <h3 style={styles.cityHeadingStyle}>Ok, we've made your itinerary for {checkCity(request.city)}</h3>
+            <h3 style={styles.cityHeadingStyle}>Ok, I've made your itinerary for {checkCity(request.city)}</h3>
           )
         }
         {
@@ -139,7 +139,7 @@ export default function Home() {
           }
           {
             itinerary && (
-              <h3 style={styles.cityHeadingStyle}> Ready to take the next step? Support us by booking <a target="_blank" rel="no-opener" href="https://bit.ly/roamaroundfoot">here</a></h3>
+              <h3 style={styles.cityHeadingStyle}> I've done the hard work, the next step is easy.  <a target="_blank" rel="no-opener" href="https://bit.ly/roamaroundfoot"> Book here</a></h3>
             )
           }
 
