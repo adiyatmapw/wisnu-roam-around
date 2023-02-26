@@ -24,7 +24,8 @@ export default function Home() {
   async function hitAPI() {
     try {
       if (!request.city || !request.days) return
-      setMessage('Building itinerary...this may take 40 seconds')
+      setMessage('Hi! We hit out GPT limits at the moment. Please come back tomorrow!')
+           //setMessage('Building itinerary...this may take 40 seconds')
       setLoading(true)
       setItinerary('')
 
