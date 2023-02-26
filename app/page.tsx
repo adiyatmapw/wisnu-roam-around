@@ -10,25 +10,11 @@ export default function Home() {
   let [itinerary, setItinerary] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
-  const [country, setCountry] = useState('')
 
   useEffect(() => {
     checkRedirect()
-    getGeoInfo()
-
   }, [])
 
-  const getGeoInfo = async () => {
-    const response = await fetch('https://ipapi.co/json/', {
-      method: 'get'
-    })
-    const data = await response.json();
-    setCountry(data.country)
-  };
-
-  const isUserConnectedFromIndia = () => {
-    return country.toLowerCase().startsWith('in');
-  }
   function checkRedirect() {
     if (window.location.hostname === 'gpt-travel-advisor.vercel.app') {
       window.location.replace('https://www.roamaround.io/')
@@ -48,7 +34,7 @@ export default function Home() {
     }
     try {
       if (!request.city || !request.startDate || !isDateValid(new Date(request.startDate))  || !request.endDate || !isDateValid(new Date(request.endDate)) ||
-          new Date(request.startDate) > new Date(request.endDate) || isUserConnectedFromIndia()) return
+          new Date(request.startDate) > new Date(request.endDate)) return
       const days = diffDate(new Date(request.startDate), new Date(request.endDate)) + 1
       //setMessage('Hi! We hit our limits at the moment. Please come back tomorrow!')
       setMessage('Building itinerary...this may take 40 seconds')
