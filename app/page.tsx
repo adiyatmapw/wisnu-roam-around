@@ -6,7 +6,7 @@ import remarkGfm from 'remark-gfm'
 import { data } from '../city-data'
 
 export default function Home() {
-  const [request, setRequest] = useState<{days?: string, city?: string}>({})
+  const [request, setRequest] = useState<{startDate?: string, endDate?: string, city?: string}>({})
   let [itinerary, setItinerary] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
@@ -22,8 +22,20 @@ export default function Home() {
   }
 
   async function hitAPI() {
+
+    const diffDate = (startDate: Date, endDate: Date) => {
+      // @ts-ignore
+      const diffTime = endDate - startDate;
+      return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    }
+
+    const isDateValid = (date: Date) => {
+      return date.getTime() === date.getTime()
+    }
     try {
-      if (!request.city || !request.days) return
+      if (!request.city || !request.startDate || !isDateValid(new Date(request.startDate))  || !request.endDate || !isDateValid(new Date(request.endDate)) ||
+          new Date(request.startDate) > new Date(request.endDate)) return
+      const days = diffDate(new Date(request.startDate), new Date(request.endDate)) + 1
       //setMessage('Hi! We hit our limits at the moment. Please come back tomorrow!')
       setMessage('Building itinerary...this may take 40 seconds')
       setLoading(true)
@@ -42,7 +54,7 @@ export default function Home() {
       const response = await fetch('/api/get-itinerary', {
         method: 'POST',
         body: JSON.stringify({
-          days: request.days,
+          days,
           city: request.city
         })
       })
@@ -87,8 +99,11 @@ export default function Home() {
           <input style={styles.input}  placeholder="City" onChange={e => setRequest(request => ({
             ...request, city: e.target.value
           }))} />
-          <input style={styles.input} placeholder="Days" onChange={e => setRequest(request => ({
-            ...request, days: e.target.value
+          <input type="date" style={styles.input} placeholder="Start Date" onChange={e => setRequest(request => ({
+            ...request, startDate: e.target.value
+          }))} />
+          <input type="date" style={styles.input} min={request.startDate} placeholder="End Date" onChange={e => setRequest(request => ({
+            ...request, endDate: e.target.value
           }))} />
           <button className="input-button"  onClick={hitAPI}>Build Itinerary</button>
         </div>
