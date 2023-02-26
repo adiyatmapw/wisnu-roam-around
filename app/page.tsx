@@ -47,7 +47,7 @@ export default function Home() {
         })
       })
       const json = await response.json()
-      
+
       const response2 = await fetch('/api/get-points-of-interest', {
         method: 'POST',
         body: JSON.stringify({
@@ -60,8 +60,7 @@ export default function Home() {
       let itinerary = json.itinerary
 
       pointsOfInterest.map(point => {
-        // itinerary = itinerary.replace(point, `<a target="_blank" rel="no-opener" href="https://www.google.com/search?q=${encodeURIComponent(point + ' ' + request.city)}">${point}</a>`)
-        itinerary = itinerary.replace(point, `[${point}](https://www.google.com/search?q=${encodeURIComponent(point + ' ' + request.city)})`)
+        itinerary = itinerary.replace(point, `[${point}](https://www.viator.com/searchResults/all?text=${encodeURIComponent(point + ' ' + request.city)})`)
       })
 
       setItinerary(itinerary)
@@ -71,7 +70,7 @@ export default function Home() {
       setMessage('')
     }
   }
-  
+
   let days = itinerary.split('Day')
 
   if (days.length > 1) {
@@ -128,7 +127,7 @@ export default function Home() {
               <h3 style={styles.cityHeadingStyle}> Ready to take the next step? Support us by booking <a target="_blank" rel="no-opener" href="https://bit.ly/roamaroundfoot">here</a></h3>
             )
           }
-        
+
         </div>
       </div>
     </main>
