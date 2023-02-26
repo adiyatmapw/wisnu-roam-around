@@ -60,7 +60,7 @@ export default function Home() {
       let itinerary = json.itinerary
 
       pointsOfInterest.map(point => {
-        itinerary = itinerary.replace(point, `[${point}](https://www.viator.com/searchResults/all?text=${encodeURIComponent(point + ' ' + request.city)})`)
+        itinerary = itinerary.replace(point, `[${point}](https://www.viator.com/searchResults/all?pid=P00089289&mcid=42383&medium=link&text=${encodeURIComponent(point + ' ' + request.city)})`)
       })
 
       setItinerary(itinerary)
