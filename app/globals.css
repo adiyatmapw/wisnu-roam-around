@@ -150,17 +150,17 @@ input {
   }
 }
 
-@media screen and (max-width: 600px) {
-  .sponsor {
-    display: none;
-  }
-}
-
 @media screen and (max-width: 900px) {
   .results-container {
     width: 100%;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .hero-header {
+    line-height: 70px;
   }
 }
