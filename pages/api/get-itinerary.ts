@@ -39,7 +39,7 @@ export default async function handler(
     days = 10
   }
 
- // let basePrompt = `You are a travel guide that knows everything about ${city}, I am a first time visitor who wants to explore all of the city's best historical attractions, eat at the best rated restaurants, and do a few fun and adveneterous activities. What is an ideal and interesting itinerary for ${days} days in ${city}?`
+ // XXXXX let basePrompt = `You are a travel guide that knows everything about ${city}, I am a first time visitor who wants to explore all of the city's best historical attractions, eat at the best rated restaurants, and do a few fun and adveneterous activities. What is an ideal and interesting itinerary for ${days} days in ${city}?`
  let basePrompt = `What is an ideal and interesting itinerary for ${days} days in ${city}?`
  
  try {
