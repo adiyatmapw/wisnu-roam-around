@@ -37,7 +37,7 @@ export const data = {
   },
   ['cape town']: {
     link:
-    "https://www.viator.com/Cape-Town/d318-ttd?pid=P00089289&mcid=42383&medium=link"
+          "https://www.viator.com/Cape-Town/d318-ttd?pid=P00089289&mcid=42383&medium=link"
   },
   charleston: {
     link: "https://www.viator.com/Charleston/d4384-ttd?pid=P00089289&mcid=42383&medium=link"
@@ -392,6 +392,10 @@ export const data = {
   vienna: {
     link:
             "https://www.viator.com/Vienna/d454-ttd?pid=P00089289&mcid=42383&medium=link"
+  },
+  vietname: {
+    link:
+            "https://www.viator.com/Vienna/d21-ttd?pid=P00089289&mcid=42383&medium=link"
   },
   ['washington dc']: {
     link:
