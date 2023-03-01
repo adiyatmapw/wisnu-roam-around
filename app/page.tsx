@@ -4,9 +4,13 @@ import React, { useState, useEffect, useReducer } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { data } from '../city-data'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"
 
 export default function Home() {
-  const [request, setRequest] = useState<{startDate?: string, endDate?: string, city?: string}>({})
+  const [request, setRequest] = useState<{startDate?: string, daysNum?: number, city?: string}>({})
+  const [disableButton, setDisableButton] = useState<boolean>(true)
+  const [error, setError] = useState<{daysNum:boolean}>({daysNum:false})
   let [itinerary, setItinerary] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
@@ -14,6 +18,37 @@ export default function Home() {
   useEffect(() => {
     checkRedirect()
   }, [])
+
+
+  useEffect(()=>{
+    if(request.daysNum && request.daysNum>10)
+    {
+      setError(error => ({
+        ...error, daysNum: true
+      }))
+    }
+    else {
+      setError(error => ({
+        ...error, daysNum: false
+      }))
+    }
+
+    if(
+      request.city 
+      && request.daysNum 
+      && request.startDate 
+      && request.daysNum <= 10
+    )
+    {
+      setDisableButton(false)
+    }
+    if(request.city == "" || request.daysNum == 0 || request.startDate == "" || (request.daysNum && request.daysNum > 10))
+    {
+      setDisableButton(true)
+    }
+
+  },[request])
+
 
   function checkRedirect() {
     if (window.location.hostname === 'gpt-travel-advisor.vercel.app') {
@@ -23,21 +58,14 @@ export default function Home() {
 
   async function hitAPI() {
 
-    const diffDate = (startDate: Date, endDate: Date) => {
-      // @ts-ignore
-      const diffTime = endDate - startDate;
-      return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    }
-
     const isDateValid = (date: Date) => {
       return date.getTime() === date.getTime()
     }
     try {
-      if (!request.city || !request.startDate || !isDateValid(new Date(request.startDate))  || !request.endDate || !isDateValid(new Date(request.endDate)) ||
-          new Date(request.startDate) > new Date(request.endDate)) return
-      const days = diffDate(new Date(request.startDate), new Date(request.endDate)) + 1
+      if (!request.city || !request.startDate || !isDateValid(new Date(request.startDate))  || !request.daysNum) return
       //setMessage('Hi! We hit our limits at the moment. Please come back tomorrow!')
       setMessage('Building itinerary...this may take 40 seconds')
+      setDisableButton(true)
       setLoading(true)
       setItinerary('')
 
@@ -45,17 +73,16 @@ export default function Home() {
         if (!loading) return
         setMessage('Getting closer ...')
       }, 2000)
-
       setTimeout(() => {
         if (!loading) return
         setMessage('Almost there ...')
       }, 15000)
-
       const response = await fetch('/api/get-itinerary', {
         method: 'POST',
         body: JSON.stringify({
-          days,
-          city: request.city
+          days:request.daysNum,
+          city: request.city,
+          startDate:request.startDate,
         })
       })
       const json = await response.json()
@@ -76,6 +103,7 @@ export default function Home() {
       })
 
       setItinerary(itinerary)
+      setDisableButton(false)
       setLoading(false)
     } catch (err) {
       console.log('error: ', err)
@@ -98,14 +126,20 @@ export default function Home() {
         <div style={styles.formContainer} className="form-container">
           <input style={styles.input}  placeholder="City" onChange={e => setRequest(request => ({
             ...request, city: e.target.value
-          }))} />
-          <input type="date" style={styles.input} placeholder="Start Date" onChange={e => setRequest(request => ({
-            ...request, startDate: e.target.value
-          }))} />
-          <input type="date" style={styles.input} min={request.startDate} placeholder="End Date" onChange={e => setRequest(request => ({
-            ...request, endDate: e.target.value
-          }))} />
-          <button className="input-button"  onClick={hitAPI}>Build Itinerary</button>
+            }))} 
+          />
+
+          <DatePicker placeholderText={"Start Date"} minDate={new Date()}  selected={request.startDate} onChange={(date) => {
+            setRequest(request => ({
+              ...request, startDate: date
+            }))}} 
+          />
+          <input type="number" style={styles.input}  placeholder="# of Days" onChange={e => setRequest(request => ({
+            ...request, daysNum: Number(e.target.value)
+            }))} 
+          />
+          {error.daysNum && <p style={styles.daysError}>At the moment we can only build itineraries for trips 10 days or less</p>}
+          <button className='input-button' disabled={disableButton}  onClick={hitAPI}>Build Itinerary</button>
         </div>
         <div className="results-container">
         {
@@ -179,6 +213,11 @@ const styles = {
     fontWeight: '900',
     fontFamily: 'Poppins',
     fontSize: '68px'
+  },
+  daysError: {
+    color: "red",
+    fontSize: "11px",
+    margin: "5px 0"
   },
   input: {
     padding: '10px 14px',

@@ -22,11 +22,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data | Error>
 ) {
-  let days, city
+  let days, city, startDate
   if (req.body) {
     let body = JSON.parse(req.body)
     days = body.days
     city = body.city
+    startDate = body.startDate
   }
 
   const parts = city.split(' ')
@@ -39,10 +40,8 @@ export default async function handler(
     days = 10
   }
 
- // YYYY let basePrompt = `You are a travel guide that knows everything about ${city}, I am a first time visitor who wants to explore all of the city's best historical attractions, eat at the best rated restaurants, and do a few fun and adveneterous activities. What is an ideal and interesting itinerary for ${days} days in ${city}?`
- let basePrompt = `What is an ideal and interesting itinerary for ${days} days in ${city}?`
- 
- try {
+  let basePrompt = `what is an ideal and complete itinerary for ${days} days and starting out on ${startDate} in ${city}?`
+  try {
     const response = await fetch('https://api.openai.com/v1/completions', {
       method: 'POST',
       headers,
